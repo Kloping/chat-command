@@ -1,3 +1,7 @@
+**/test
+**/config
+**/logs
+**/bots
 ### Java template
 # Compiled class file
 *.class

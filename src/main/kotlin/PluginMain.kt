@@ -12,6 +12,7 @@
 
 package net.mamoe.mirai.console.plugins.chat.command
 
+import CommandSenderClient
 import kotlinx.coroutines.*
 import net.mamoe.mirai.console.MiraiConsole
 import net.mamoe.mirai.console.command.*
@@ -34,10 +35,7 @@ import net.mamoe.mirai.console.util.cast
 import net.mamoe.mirai.console.util.safeCast
 import net.mamoe.mirai.event.EventPriority
 import net.mamoe.mirai.event.Listener
-import net.mamoe.mirai.event.events.GroupMessageEvent
-import net.mamoe.mirai.event.events.GroupMessageSyncEvent
-import net.mamoe.mirai.event.events.MessageEvent
-import net.mamoe.mirai.event.events.MessageSyncEvent
+import net.mamoe.mirai.event.events.*
 import net.mamoe.mirai.event.globalEventChannel
 import net.mamoe.mirai.message.data.MessageChain
 import kotlin.reflect.KClass
@@ -53,7 +51,7 @@ object PluginMain : KotlinPlugin(
     override fun onEnable() {
         ChatCommandConfig.reload()
         globalEventChannel().subscribeAlways(
-            MessageEvent::class,
+            GroupMessageEvent::class,
             CoroutineExceptionHandler { _, throwable ->
                 logger.error(throwable)
             },
@@ -69,7 +67,7 @@ object PluginMain : KotlinPlugin(
             }
         }
         globalEventChannel().subscribeAlways(
-            MessageSyncEvent::class,
+            FriendMessageEvent::class,
             CoroutineExceptionHandler { _, throwable ->
                 logger.error(throwable)
             },
@@ -84,9 +82,22 @@ object PluginMain : KotlinPlugin(
                 handleCommand(sender, message)
             }
         }
+        globalEventChannel().subscribeAlways(
+            GroupMessageSyncEvent::class,
+            CoroutineExceptionHandler { _, throwable ->
+                logger.error(throwable)
+            },
+            priority = EventPriority.MONITOR,
+        ) call@{
+            if (!enabled) return@call
+            val sender = CommandSenderClient(this)
+            PluginMain.launch { // Async
+                handleCommand(sender, message)
+            }
+        }
     }
 
-    suspend fun handleCommand(sender: CommandSender, message: MessageChain) {
+    private suspend fun handleCommand(sender: CommandSender, message: MessageChain) {
 
         fun isDebugging(command: Command?): Boolean {/*
             if (command?.prefixOptional == false || message.content.startsWith(CommandManager.commandPrefix)) {
@@ -98,10 +109,13 @@ object PluginMain : KotlinPlugin(
         }
 
         when (val result = CommandManager.executeCommand(sender, message)) {
+
             is PermissionDenied -> {
                 if (isDebugging(result.command)) {
-                    sender.sendMessage("权限不足. ${CommandManager.commandPrefix}${result.command.primaryName} 需要权限 ${result.command.permission.id}.")
-                    // intercept()
+                    sender.sendMessage(
+                        "权限不足. <${result.call.caller.subject?.id}>" +
+                                "${CommandManager.commandPrefix}${result.command.primaryName} 需要权限 ${result.command.permission.id}."
+                    )
                 }
             }
 
