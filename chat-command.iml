@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/kotlin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/kotlin" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="Maven: net.mamoe:mirai-core-all:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: net.mamoe:mirai-core-api-jvm:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-reflect:1.7.10" level="project" />
+    <orderEntry type="library" name="Maven: net.mamoe:mirai-core-utils-jvm:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: me.him188:kotlin-jvm-blocking-bridge-runtime-jvm:2.1.0-170.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-client-core-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-http-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-utils-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-events-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-websocket-serialization-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-serialization-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-websockets-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.6.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-client-okhttp-jvm:2.1.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.squareup.okhttp3:okhttp:4.9.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.squareup.okio:okio:2.8.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.ktor:ktor-io-jvm:2.1.0" level="project" />
+    <orderEntry type="library" name="Maven: net.mamoe:mirai-core-jvm:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.bouncycastle:bcprov-jdk15on:1.64" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: me.him188:kotlin-dynamic-delegation-jvm:0.3.0-170.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlinx:kotlinx-serialization-protobuf-jvm:1.3.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains.kotlinx:atomicfu-jvm:0.18.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.logging.log4j:log4j-api:2.17.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.netty:netty-all:4.1.63.Final" level="project" />
+    <orderEntry type="library" name="Maven: net.mamoe:mirai-console:2.13.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.mamoe:mirai-console-compiler-annotations-jvm:2.13.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.mamoe.yamlkt:yamlkt-jvm:0.12.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:19.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.github.karlatemp:caller:1.1.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-api:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven:maven-resolver-provider:3.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven:maven-model:3.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven:maven-model-builder:3.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.plexus:plexus-interpolation:1.26" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven:maven-artifact:3.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven:maven-builder-support:3.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.eclipse.sisu:org.eclipse.sisu.inject:0.3.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven:maven-repository-metadata:3.8.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-spi:1.6.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-util:1.6.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.codehaus.plexus:plexus-utils:3.3.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-impl:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-named-locks:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.commons:commons-lang3:3.8.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: javax.annotation:javax.annotation-api:1.3.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-connector-basic:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.maven.resolver:maven-resolver-transport-http:1.7.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: commons-codec:commons-codec:1.11" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.32" level="project" />
+    <orderEntry type="library" name="Maven: net.mamoe:mirai-console-terminal:2.13.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jline:jline:3.21.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.fusesource.jansi:jansi:2.4.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: net.mamoe:mirai-console-frontend-base:2.13.3" level="project" />
+  </component>
+</module>
