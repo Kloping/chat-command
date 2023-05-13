@@ -1,76 +1,75 @@
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
 import net.mamoe.mirai.Bot;
-import net.mamoe.mirai.console.command.CommandSenderOnMessage;
+import net.mamoe.mirai.console.command.CommandSender;
 import net.mamoe.mirai.console.command.ConsoleCommandSender;
 import net.mamoe.mirai.console.permission.PermitteeId;
 import net.mamoe.mirai.contact.Contact;
+import net.mamoe.mirai.contact.Member;
 import net.mamoe.mirai.contact.User;
-import net.mamoe.mirai.event.events.GroupMessageSyncEvent;
-import net.mamoe.mirai.event.events.MessageSyncEvent;
 import net.mamoe.mirai.message.MessageReceipt;
+import net.mamoe.mirai.message.data.ForwardMessage;
+import net.mamoe.mirai.message.data.ForwardMessageBuilder;
 import net.mamoe.mirai.message.data.Message;
+import net.mamoe.mirai.message.data.PlainText;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author github.kloping
  */
-public class CommandSenderClient implements CommandSenderOnMessage<MessageSyncEvent> {
-    private GroupMessageSyncEvent event;
+public class CommandSenderClientForward0 implements CommandSender {
 
-    public GroupMessageSyncEvent getEvent() {
-        return event;
-    }
+    private CommandSenderClient senderClient;
+    private Member member;
 
-    public CommandSenderClient(GroupMessageSyncEvent event) {
-        this.event = event;
+    public CommandSenderClientForward0(CommandSenderClient senderClient) {
+        this.senderClient = senderClient;
+        member = senderClient.getEvent().getSender();
     }
 
     @Nullable
     @Override
     public Bot getBot() {
-        return event.getBot();
+        return member.getBot();
     }
 
     @NotNull
     @Override
     public String getName() {
-        return "client";
+        return member.getNameCard();
     }
 
     @Nullable
     @Override
     public Contact getSubject() {
-        return event.getSubject();
+        return member.getGroup();
     }
 
     @Nullable
     @Override
     public User getUser() {
-        return event.getSender();
+        return member;
     }
 
     @Nullable
     @Override
     public Object sendMessage(@NotNull String s, @NotNull Continuation<? super MessageReceipt<? extends Contact>> continuation) {
-        return event.getGroup().sendMessage(s);
+        ForwardMessageBuilder builder = new ForwardMessageBuilder(member.getGroup());
+        builder.add(member.getBot(), new PlainText(s));
+        ForwardMessage fm = builder.build();
+        return member.getGroup().sendMessage(fm);
     }
 
     @Nullable
     @Override
     public Object sendMessage(@NotNull Message message, @NotNull Continuation<? super MessageReceipt<? extends Contact>> continuation) {
-        return event.getGroup().sendMessage(message);
+        ForwardMessageBuilder builder = new ForwardMessageBuilder(member.getGroup());
+        builder.add(member.getBot(), message);
+        ForwardMessage fm = builder.build();
+        return member.getGroup().sendMessage(fm);
     }
 
-    @NotNull
-    @Override
-    public MessageSyncEvent getFromEvent() {
-        return event;
-    }
-
-    @NotNull
-    @Override
     public PermitteeId getPermitteeId() {
         return ConsoleCommandSender.INSTANCE.getPermitteeId();
     }
@@ -78,6 +77,6 @@ public class CommandSenderClient implements CommandSenderOnMessage<MessageSyncEv
     @NotNull
     @Override
     public CoroutineContext getCoroutineContext() {
-        return event.getBot().getCoroutineContext();
+        return member.getBot().getCoroutineContext();
     }
 }

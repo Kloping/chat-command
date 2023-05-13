@@ -1,3 +1,6 @@
+plugin-libraries
+data
+plugin-shared-libraries
 **/test
 **/config
 **/logs

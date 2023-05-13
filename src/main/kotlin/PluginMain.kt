@@ -13,6 +13,8 @@
 package net.mamoe.mirai.console.plugins.chat.command
 
 import CommandSenderClient
+import CommandSenderClientForward
+import CommandSenderClientForward0
 import kotlinx.coroutines.*
 import net.mamoe.mirai.console.MiraiConsole
 import net.mamoe.mirai.console.command.*
@@ -34,17 +36,17 @@ import net.mamoe.mirai.console.util.ConsoleInternalApi
 import net.mamoe.mirai.console.util.cast
 import net.mamoe.mirai.console.util.safeCast
 import net.mamoe.mirai.event.EventPriority
-import net.mamoe.mirai.event.Listener
 import net.mamoe.mirai.event.events.*
 import net.mamoe.mirai.event.globalEventChannel
 import net.mamoe.mirai.message.data.MessageChain
+import net.mamoe.mirai.message.data.content
 import kotlin.reflect.KClass
 import kotlin.reflect.full.isSubclassOf
 
 
 object PluginMain : KotlinPlugin(
     JvmPluginDescription(
-        id = "net.mamoe.mirai.console.chat-command", name = "Chat Command", version = "0.5.3"
+        id = "net.mamoe.mirai.console.chat-command", name = "Chat Command", version = "0.5.4"
     )
 ) {
     @OptIn(ConsoleExperimentalApi::class, ExperimentalCommandDescriptors::class)
@@ -97,7 +99,7 @@ object PluginMain : KotlinPlugin(
         }
     }
 
-    private suspend fun handleCommand(sender: CommandSender, message: MessageChain) {
+    private suspend fun handleCommand(sender0: CommandSender, message: MessageChain) {
 
         fun isDebugging(command: Command?): Boolean {/*
             if (command?.prefixOptional == false || message.content.startsWith(CommandManager.commandPrefix)) {
@@ -108,13 +110,20 @@ object PluginMain : KotlinPlugin(
             return false
         }
 
+        var sender = sender0;
+        if (message[1].content == "/help") {
+            if (sender is MemberCommandSender) {
+                sender = CommandSenderClientForward(sender)
+            } else if (sender is CommandSenderClient) {
+                sender = CommandSenderClientForward0(sender)
+            }
+        }
         when (val result = CommandManager.executeCommand(sender, message)) {
 
             is PermissionDenied -> {
                 if (isDebugging(result.command)) {
                     sender.sendMessage(
-                        "权限不足. <${result.call.caller.subject?.id}>" +
-                                "${CommandManager.commandPrefix}${result.command.primaryName} 需要权限 ${result.command.permission.id}."
+                        "权限不足. <${result.call.caller.subject?.id}>" + "${CommandManager.commandPrefix}${result.command.primaryName} 需要权限 ${result.command.permission.id}."
                     )
                 }
             }
